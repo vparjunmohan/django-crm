@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import *
 urlpatterns = [
+    path('', landing_page, name='landing-page'),
     path('leads/', lead_page, name='lead-list'),
     path('leads/<int:pk>/', lead_detail, name='lead-detail'),
     path('leads/<int:pk>/update', lead_update, name='lead-update'),
