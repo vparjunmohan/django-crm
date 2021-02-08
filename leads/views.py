@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView, CreateView 
 from django.contrib.auth.forms import UserCreationForm
 from .forms import *
+from agents.mixins import OrganisorAndLoginRequiredMixin
 # Create your views here.
 
 
@@ -61,7 +62,7 @@ class LeadDetailView(LoginRequiredMixin, DetailView):
 # class based view
 
 
-class LeadCreateView(LoginRequiredMixin, CreateView):
+class LeadCreateView(OrganisorAndLoginRequiredMixin, CreateView):
     template_name = 'lead_create.html'
     form_class = LeadModelForm
 
@@ -92,7 +93,7 @@ class LeadCreateView(LoginRequiredMixin, CreateView):
 # class based view
 
 
-class LeadUpdateView(LoginRequiredMixin, UpdateView):
+class LeadUpdateView(OrganisorAndLoginRequiredMixin, UpdateView):
     template_name = 'lead_update.html'
     form_class = LeadModelForm
     queryset = Lead.objects.all()
@@ -118,7 +119,7 @@ class LeadUpdateView(LoginRequiredMixin, UpdateView):
 # class based view
 
 
-class LeadDeleteView(LoginRequiredMixin, DeleteView):
+class LeadDeleteView(OrganisorAndLoginRequiredMixin, DeleteView):
     template_name = 'lead_delete.html'
     queryset = Lead.objects.all()
 
